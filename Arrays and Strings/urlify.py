@@ -1,54 +1,37 @@
-MAX = 1000;
- 
-# Replaces spaces with %20 in-place and returns
-# new length of modified string. It returns -1
-# if modified string cannot be stored in str[]
-def replaceSpaces(string):
-     
-    # Remove remove leading and trailing spaces
-    string = string.strip()
- 
-    i = len(string)
- 
-    # count spaces and find current length
-    space_count = string.count(' ')
-    print(space_count)
-    # Find new length.
-    new_length = i + space_count * 2
-    print(new_length)
- 
-    # New length must be smaller than length
-    # of string provided.
-    if new_length > MAX:
-        return -1
- 
-    # Start filling character from end
-    index = new_length - 1
- 
-    string = list(string)
+MAXCHAR  = 100
 
-    # Fill string array
-    for f in range(i - 2, new_length - 2):
-        string.append('0')
-    print(string)
- 
-    # Fill rest of the string from end
-    for j in range(i - 1, 0, -1):
- 
-        # inserts %20 in place of space
-        if string[j] == ' ':
-            string[index] = '0'
-            string[index - 1] = '2'
-            string[index - 2] = '%'
-            index = index - 3
-        else:
-            string[index] = string[j]
-            index -= 1
- 
-    return ''.join(string)
- 
-# Driver Code
+class URLify:
+    
+    def urlify(self, str):
+        str = str.strip()
+        i = len(str)-1
+        if i>MAXCHAR:
+            return -1 
+        # Make a stripped format of list
+        arrList = list(str)
+        # print(arrList)
+        spaceCount = 0
+        for space in arrList : 
+            if space == ' ':
+                spaceCount+=1
+        # print(spaceCount)
+        newIndex = i + 2*spaceCount
+        # print(newIndex)
+        for item in range(i-2,newIndex-2):
+            arrList.append('0')
+        # print(arrList)
+        for j in range(i-1,0,-1):
+            if arrList[j] == ' ':
+               arrList[newIndex] = '0'
+               arrList[newIndex-1] = '2'
+               arrList[newIndex-2] = '%'
+               newIndex = newIndex-3
+            else : 
+                arrList[newIndex] = arrList[j]
+                newIndex-=1
+        return "".join(arrList)  
 if __name__ == '__main__':
-    s = "Mr John Smith "
-    s = replaceSpaces(s)
-    print(s)
+    obj = URLify()
+
+    str = 'Mr John Smith  '
+    print(obj.urlify(str))
