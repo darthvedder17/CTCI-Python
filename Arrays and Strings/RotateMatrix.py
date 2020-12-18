@@ -18,6 +18,7 @@ class RotateMatrix:
 		# Mirror the matrix to get the output
 		for i in range(rows):
 			for j in range(rows//2):
+				# One increment of j from one side means decrement j from the other side by 1
 				matrix[i][j],matrix[i][rows-1-j] =matrix[i][rows-1-j],matrix[i][j]
 				# print(matrix)
 		return matrix

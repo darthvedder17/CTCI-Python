@@ -33,5 +33,5 @@ if __name__ == '__main__':
 			  [4,5,6],
 			  [7,8,0],
 			  [3,4,1]]
-	print('[bold magenta]The original matrix : [/bold magenta]',matrix);
+	print('[bold magentaT]he original matrix : [/bold magenta]',matrix);
 	print('The zero Matrix : ', obj.zeroMatrix(matrix))
